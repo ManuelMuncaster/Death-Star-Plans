@@ -27,7 +27,7 @@ namespace Death_Star_Plans
             Font missionFont = new Font("Consolas", 16, FontStyle.Bold);
             SolidBrush greenBrush = new SolidBrush(Color.Green);
 
-            fg.DrawString
+            fg.DrawString 
         }
     }
 }
