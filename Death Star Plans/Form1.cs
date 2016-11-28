@@ -20,6 +20,9 @@ namespace Death_Star_Plans
 
         private void Form1_Click(object sender, EventArgs e)
         {
+            int x = 650;
+            int z = 0;
+            int y = 300;
             pictureBox1.Visible = false;
             titleLabel.Visible = false;
             titleLabel2.Visible = false;
@@ -28,7 +31,8 @@ namespace Death_Star_Plans
             Font missionFont = new Font("Consolas", 14, FontStyle.Bold);
             SolidBrush greenBrush = new SolidBrush(Color.Green);
             SolidBrush whiteBrush = new SolidBrush(Color.White);
-            Pen whitePen = new Pen(Color.White);
+            Pen whitePen = new Pen(Color.FromArgb(255, 255, 255, 255), 30);
+            Pen blackPen = new Pen(Color.Black);
 
             fg.DrawString("Recieved Transmisson...", missionFont, greenBrush, 10, 40);
             fg.DrawString("The Death Star has a exhast port that can be breached.", missionFont, greenBrush, 10, 80);
@@ -39,9 +43,37 @@ namespace Death_Star_Plans
 
             fg.Clear(Color.Black);
 
-            fg.FillRectangle(whiteBrush, 25, 25, 100, 200);
-            //fg.DrawEllipse(whitePen, 200, 100, 300, 300);
+            // for (x = 600; x <= this.Width; x--)
+            while (x >= -20)
+            {
+                //act
+                fg.Clear(Color.Black);
+                fg.FillRectangle(whiteBrush, x, 300, 20, 20);
+                fg.DrawLine(whitePen, 0, 415, 285, 415);
+                fg.DrawLine(whitePen, 385, 415, 800, 415);
+                Thread.Sleep(5);
+                x--;
 
+                if (x == 440)
+                {
+                    z = 1;
+                }
+                if (z == 1)
+                {
+                    fg.Clear(Color.Black);
+                    fg.FillRectangle(whiteBrush, x, 300, 20, 20);
+                    fg.FillEllipse(whiteBrush, x, y, 10, 10);
+                    fg.DrawLine(whitePen, 0, 415, 285, 415);
+                    fg.DrawLine(whitePen, 385, 415, 800, 415);
+                    y++;
+                }
+                fg.Clear(Color.Black);
+            }
         }
     }
 }
+   
+
+ 
+
+
