@@ -72,6 +72,15 @@ namespace Death_Star_Plans.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Fanfare {
+            get {
+                return ResourceManager.GetStream("Fanfare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream Proton {
             get {
                 return ResourceManager.GetStream("Proton", resourceCulture);

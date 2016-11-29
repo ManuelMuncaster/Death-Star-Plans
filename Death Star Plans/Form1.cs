@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Made by: Manuel Muncaster
+//Date: November 22-29, 2016
+//Purpose: Create an animation using for/while loops.
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,17 +37,20 @@ namespace Death_Star_Plans
 
             SoundPlayer player1 = new SoundPlayer(Properties.Resources.Proton);
             SoundPlayer player2 = new SoundPlayer(Properties.Resources.Explosion);
+            SoundPlayer player3 = new SoundPlayer(Properties.Resources.Fanfare);
 
-            //setting up pens/fonts/brushes
+            //Setting up pens/fonts/brushes
             Graphics fg = this.CreateGraphics();
             Font missionFont = new Font("Consolas", 14, FontStyle.Bold);
             SolidBrush greenBrush = new SolidBrush(Color.Green);
             SolidBrush whiteBrush = new SolidBrush(Color.White);
             SolidBrush blackBrush = new SolidBrush(Color.Black);
+            SolidBrush fadeBrush = new SolidBrush(Color.White);
             Pen whitePen1 = new Pen(Color.FromArgb(255, 255, 255, 255), 30);
             Pen whitePen2 = new Pen(Color.FromArgb(255, 255, 255, 255), 1);
             Pen blackPen = new Pen(Color.Black);
 
+            //Message after the screen has been clicked
             fg.DrawString("Recieved Transmission...", missionFont, greenBrush, 10, 40);
             fg.DrawString("The Death Star is heavily shielded and carries a \r\nfirepower greater than half the star fleet.", missionFont, greenBrush, 10, 80);
             fg.DrawString("It's defenses are designed around a direct large - scale \r\nassault.", missionFont, greenBrush, 10, 125);
@@ -56,11 +62,11 @@ namespace Death_Star_Plans
             fg.DrawString("A precise hit", missionFont, greenBrush, 510, 212);
             fg.DrawString("will start a chain reaction which should destroy the station.", missionFont, greenBrush, 10, 235);
             fg.DrawString("Good luck rookie!!!", missionFont, greenBrush, 10, 275);
-          //  Thread.Sleep(15000);
+            Thread.Sleep(20000);
 
             fg.Clear(Color.Black);
                 
-
+            //Diagram of the Death Star
             fg.DrawEllipse(whitePen2, 126, 20, 400, 400);
             fg.DrawEllipse(whitePen2, 196, 65, 100, 100);
             fg.DrawEllipse(whitePen2, 219, 86, 50, 50);
@@ -72,24 +78,25 @@ namespace Death_Star_Plans
             fg.Clear(Color.Black);
 
             while (x >= -20)
-            {
+            {   //While loop for the X-wing flying in
                 fg.Clear(Color.Black);
                 fg.FillRectangle(whiteBrush, x, 300, 20, 20);
                 fg.DrawLine(whitePen1, 0, 415, 285, 415);
                 fg.DrawLine(whitePen1, 385, 415, 800, 415);
                 Thread.Sleep(5);
                 x--;
-
+       
                 if (x == 400)
-                {
+                {   //Variable to determine when to drop the proton torpedo
                     z = 1;
                     player1.Play();
                 }
                 if (z == 1)
-                {
+                {   //Second part of the loop to drop the torpedo
                     fg.Clear(Color.Black);
                     fg.FillRectangle(whiteBrush, x, 300, 20, 20);
-
+                    
+                    //Quadratic Equation to drop the torpedo in a arc
                     y2 = (x * x * 0.018) - (14.22 * x) + 3144;
                     y3 = Convert.ToInt32(y2);
                     fg.FillEllipse(whiteBrush, x, y3, 10, 10);
@@ -100,7 +107,7 @@ namespace Death_Star_Plans
                 fg.Clear(Color.Black);
             }
             for (y = 0; y <= 260; y++)
-            {
+            {   //For loop for the torpedo going down to the core
                 fg.Clear(Color.Black);
                 fg.DrawLine(whitePen2, 326, 0, 326, 245);
                 fg.DrawEllipse(whitePen2, 304, 245, 44, 44);
@@ -108,14 +115,14 @@ namespace Death_Star_Plans
                 Thread.Sleep(5);
 
                 if (y == 260)
-                {
+                {   //Variable to determine how long the explosion goes for
                     z = 25;
                     player2.Play();
                 }
                 if (z == 25)
                 {
                     for (z = 25; z >= 1; z-- )
-                    {
+                    {   //Drawing the explosion
                         fg.TranslateTransform(100.0F, 0.0F);
                         fg.FillRectangle(whiteBrush, 217, 148, 20, 135);
                         fg.FillRectangle(whiteBrush, 217, 248, 20, 135);
@@ -143,10 +150,18 @@ namespace Death_Star_Plans
                         fg.FillEllipse(whiteBrush, 315, y, 20, 20);
                     }
                     fg.Clear(Color.Black);
+                    
+                    player3.Play();
 
-                    fg.DrawString("Good job!!! You blew up the Death Star and brought balance to \r\nthe force!", missionFont, greenBrush, 10, 40);
+                    for (int color = 1; color <= 255; color++)
+                    {   //For loop for color fade on final message
+                        fg.Clear(Color.Black);
+                        fadeBrush.Color = Color.FromArgb(0, 0 + color , 255 - color);
+                        fg.DrawString("Good job!!! You blew up the Death Star and brought balance to \r\nthe force!", missionFont, fadeBrush, 10, 40);
+                        Thread.Sleep(10);
+                    }
 
-                    Thread.Sleep(3000);
+                    Thread.Sleep(5000);
 
                     Application.Exit();
                 }
