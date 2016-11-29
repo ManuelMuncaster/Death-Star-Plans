@@ -44,9 +44,24 @@ namespace Death_Star_Plans
             Pen blackPen = new Pen(Color.Black);
 
             fg.DrawString("Recieved Transmission...", missionFont, greenBrush, 10, 40);
-            fg.DrawString("The Death Star has an exhast port that can be breached.", missionFont, greenBrush, 10, 80);
-            fg.DrawString("Your mission is to put a proton torpedo into that exhast port.", missionFont, greenBrush, 10, 100);
-            fg.DrawString("Good luck rookie!!", missionFont, greenBrush, 10, 140);
+            fg.DrawString("The Death Star is heavily shielded and carries a \r\nfirepower greater than half the star fleet.", missionFont, greenBrush, 10, 80);
+            fg.DrawString("It's defenses are designed around a direct large - scale \r\nassault.", missionFont, greenBrush, 10, 125);
+            fg.DrawString("A small one-man fighter should be able to penetrate", missionFont, greenBrush, 100, 147);
+            fg.DrawString("the outer defence.", missionFont, greenBrush, 10, 170);
+            fg.DrawString("The target area is only two meters wide.", missionFont, greenBrush, 203, 170);
+            fg.DrawString("It's a small thermal exhaust port, right below the main port.", missionFont, greenBrush, 10, 190);
+            fg.DrawString("The shaft leads directly to the reactor system.", missionFont, greenBrush, 10, 212);
+            fg.DrawString("A precise hit", missionFont, greenBrush, 510, 212);
+            fg.DrawString("will start a chain reaction which should destroy the station.", missionFont, greenBrush, 10, 235);
+            fg.DrawString("Good luck rookie!!!", missionFont, greenBrush, 10, 275);
+            Thread.Sleep(15000);
+
+            fg.Clear(Color.Black);
+                
+
+            fg.DrawEllipse(whitePen2, 130, 20, 400, 400);
+            fg.DrawEllipse(whitePen2, 200, 65, 100, 100);
+            fg.DrawEllipse(whitePen2, 223, 86, 50, 50);
 
             Thread.Sleep(5000);
 
