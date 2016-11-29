@@ -21,6 +21,7 @@ namespace Death_Star_Plans
 
         private void Form1_Click(object sender, EventArgs e)
         {
+            //Setting up variables
             int x = 650;
             int z = 0;
             int y = 300;
@@ -34,6 +35,7 @@ namespace Death_Star_Plans
             SoundPlayer player1 = new SoundPlayer(Properties.Resources.Proton);
             SoundPlayer player2 = new SoundPlayer(Properties.Resources.Explosion);
 
+            //setting up pens/fonts/brushes
             Graphics fg = this.CreateGraphics();
             Font missionFont = new Font("Consolas", 14, FontStyle.Bold);
             SolidBrush greenBrush = new SolidBrush(Color.Green);
@@ -54,14 +56,16 @@ namespace Death_Star_Plans
             fg.DrawString("A precise hit", missionFont, greenBrush, 510, 212);
             fg.DrawString("will start a chain reaction which should destroy the station.", missionFont, greenBrush, 10, 235);
             fg.DrawString("Good luck rookie!!!", missionFont, greenBrush, 10, 275);
-            Thread.Sleep(15000);
+          //  Thread.Sleep(15000);
 
             fg.Clear(Color.Black);
                 
 
-            fg.DrawEllipse(whitePen2, 130, 20, 400, 400);
-            fg.DrawEllipse(whitePen2, 200, 65, 100, 100);
-            fg.DrawEllipse(whitePen2, 223, 86, 50, 50);
+            fg.DrawEllipse(whitePen2, 126, 20, 400, 400);
+            fg.DrawEllipse(whitePen2, 196, 65, 100, 100);
+            fg.DrawEllipse(whitePen2, 219, 86, 50, 50);
+            fg.DrawLine(whitePen2, 330, 20, 330, 200);
+            fg.DrawEllipse(whitePen2, 318, 200, 25, 25);
 
             Thread.Sleep(5000);
 
@@ -140,7 +144,7 @@ namespace Death_Star_Plans
                     }
                     fg.Clear(Color.Black);
 
-                    fg.DrawString("Good job!!! You blew up the Death Star!", missionFont, greenBrush, 10, 40);
+                    fg.DrawString("Good job!!! You blew up the Death Star and brought balance to \r\nthe force!", missionFont, greenBrush, 10, 40);
 
                     Thread.Sleep(3000);
 
